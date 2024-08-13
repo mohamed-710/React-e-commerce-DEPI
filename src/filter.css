@@ -1,0 +1,11 @@
+.Filter {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #1f2937;
+}
