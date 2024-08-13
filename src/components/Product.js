@@ -1,8 +1,6 @@
 import '../image.css'
 function Product({product,onAddToCart})
 {
-   
-    console.log(product)
     return(
         
         <>
