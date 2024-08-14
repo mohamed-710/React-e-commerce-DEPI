@@ -77,11 +77,11 @@ const SlideShow = () => {
             <div className="flex-1 flex justify-center">
               <img className='w-full h-auto' src={img2} alt="Man" />
             </div>
-            <div className="flex-1 text-center md:text-left">
-              <h4 className="font-bold tracking-wide text-xl text-gray-600">Shopping with us.</h4>
+            <div className="flex-1 text-center md:text-left max-sm:pt-16">
+              <h4 className="font-bold tracking-wide text-xl max-sm:mb-4 text-gray-600">Shopping with us.</h4>
               <h1 className="font-bold text-4xl md:text-7xl text-gray-800">Welcome (:</h1>
               <div>
-                <Link to="#" className="btn-flip relative text-center uppercase duration-100" data-back="thank you" data-front="Hover me"></Link>
+                <Link to="#" className="btn-flip relative text-center lg:mr-20 max-sm:mb-20 max-sm:mr-24 uppercase duration-100" data-back="thank you" data-front="Hover me"></Link>
               </div>
             </div>
             <div className="flex-1 flex justify-center">
