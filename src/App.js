@@ -109,7 +109,7 @@ function App() {
         document.body.classList.toggle('dark-mode', !isDarkMode);
     };
 
-    // Update SearchProducts to include filtering logic
+
     const SearchProducts = sortedProducts
         .filter(product => {
             const query = searchQuery.toLowerCase();
@@ -159,7 +159,6 @@ function App() {
                                 error={error} 
                                 onAddToCart={handleAddToCart}  
                             />
-                           
                            {isCartOpen && (
                               <Cart 
                                 cartItems={cartItems} 
