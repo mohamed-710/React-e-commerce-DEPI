@@ -8,6 +8,7 @@ import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import './App.css';
 import './cart.css';
+import Footer from './components/Footer';
 
 function App() {
     const base_url = "https://dummyjson.com/products/category/";
@@ -171,6 +172,10 @@ function App() {
                         </>
                     )}
                 </div>
+                 <div>
+      {/* Other components */}
+      <Footer />
+    </div>
             </div>
         </Router>
     );
