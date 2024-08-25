@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import Loading from './components/Loading'; 
-import SlideShow from './components/slideShow'; 
+import Loading from './components/Loading';
+import SlideShow from './components/slideShow';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import './App.css';
 import './cart.css';
 import Footer from './components/Footer';
+import ProductDetailsList from './components/ProductDetailsList';
 
 function App() {
     const base_url = "https://dummyjson.com/products/category/";
     const [label, setLabel] = useState('smartphones');
     const [products, setProducts] = useState([]);
-    const [sortedProducts, setSortedProducts] = useState([]); 
+    const [sortedProducts, setSortedProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
     const [error, setError] = useState(null);
@@ -24,14 +25,14 @@ function App() {
     const [sort, setSort] = useState('title');
     const [cartItems, setCartItems] = useState([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
-    const [filter,setFilter]=useState('');
+    const [filter, setFilter] = useState('');
 
     const toggleSidebar = () => {
         setIsSidebarOpen(prev => !prev);
     };
 
     const toggleCart = () => {
-        setIsCartOpen(prev => !prev); 
+        setIsCartOpen(prev => !prev);
     };
 
     const handleAddToCart = (product) => {
@@ -96,14 +97,14 @@ function App() {
                 } else if (sort === 'price') {
                     return b.price - a.price;
                 } else if (sort === 'rating') {
-                    return b.rating - a.rating; 
+                    return b.rating - a.rating;
                 }
                 return 0;
             });
             setSortedProducts(sorted);
         };
         sortProducts();
-    }, [sort, products]); 
+    }, [sort, products]);
 
     const changeTheme = () => {
         setIsDarkMode(prev => !prev);
@@ -121,9 +122,9 @@ function App() {
         })
         .filter(product => {
             if (filter === 'price') {
-                return product.price <= 1000; 
+                return product.price <= 1000;
             } else if (filter === 'rating') {
-                return product.rating >= 4; 
+                return product.rating >= 4;
             }
             return true;
         });
@@ -142,7 +143,7 @@ function App() {
                     setFilter={setFilter}
                     filter={filter}
                 />
-                <Sidebar 
+                <Sidebar
                     isOpen={isSidebarOpen}
                     toggleSidebar={toggleSidebar}
                     categories={categories}
@@ -154,27 +155,33 @@ function App() {
                         <Loading />
                     ) : (
                         <>
+                        <Routes>
+                    <Route path="/" element={
+                        <>
                             <SlideShow />
-                            <ProductList 
-                                products={SearchProducts} 
-                                error={error} 
-                                onAddToCart={handleAddToCart}  
+                            <ProductList
+                                products={SearchProducts}
+                                error={error}
+                                onAddToCart={handleAddToCart}
                             />
-                           {isCartOpen && (
-                              <Cart 
-                                cartItems={cartItems} 
-                                setCartItems={setCartItems} 
-                                toggleCart={toggleCart} 
-                              />
+                        </>
+                    } />
+                    <Route path="/product/:id" element={<ProductDetailsList onAddToCart={handleAddToCart}/>} />
+                </Routes>
+                            {isCartOpen && (
+                                <Cart
+                                    cartItems={cartItems}
+                                    setCartItems={setCartItems}
+                                    toggleCart={toggleCart}
+                                />
                             )}
-                            
+
                         </>
                     )}
                 </div>
-                 <div>
-      {/* Other components */}
-      <Footer />
-    </div>
+                <div>
+                    <Footer />
+                </div>
             </div>
         </Router>
     );

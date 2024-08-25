@@ -45,7 +45,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="ml-4 flex justify-center">
-          <hr class="border-b border-gray-900 w-[100%] mt-5 mb-5  my-4" />
+          <hr className="border-b border-gray-900 w-[100%] mt-5 mb-5  my-4" />
         </div>
         <div className="flex flex-wrap justify-between">
           {/* Company Info */}
