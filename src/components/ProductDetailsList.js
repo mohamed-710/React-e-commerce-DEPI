@@ -4,7 +4,7 @@ import ProductDetails from './ProductDetails';
 import Loading from './Loading';
 import Error from './Error';
 
-function ProductDetailsList({ onAddToCart }) { // Receive onAddToCart as a prop
+function ProductDetailsList({ onAddToCart }) { 
     const { id } = useParams(); 
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -41,7 +41,7 @@ function ProductDetailsList({ onAddToCart }) { // Receive onAddToCart as a prop
 
     return (
         <div className="product-details-page">
-            <ProductDetails product={product} onAddToCart={onAddToCart} /> {/* Pass onAddToCart to ProductDetails */}
+            <ProductDetails product={product} onAddToCart={onAddToCart} /> 
         </div>
     );
 }
